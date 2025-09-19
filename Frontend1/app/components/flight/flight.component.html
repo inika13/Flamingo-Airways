@@ -1,0 +1,75 @@
+<div class="flight-container">
+  <h2>Flight Management</h2>
+
+ 
+  <form (ngSubmit)="addFlight()" class="flight-form">
+    <div class="form-group">
+      <label>Flight Number</label>
+      <input type="text" [(ngModel)]="newFlight.flightNumber" name="flightNumber" required />
+    </div>
+
+    <div class="form-group">
+      <label>Origin</label>
+      <input type="text" [(ngModel)]="newFlight.origin" name="origin" required />
+    </div>
+
+    <div class="form-group">
+      <label>Destination</label>
+      <input type="text" [(ngModel)]="newFlight.destination" name="destination" required />
+    </div>
+
+    <div class="form-group">
+      <label>Travel Date</label>
+      <input type="date" [(ngModel)]="newFlight.travelDate" name="travelDate" required />
+    </div>
+
+    <div class="form-group">
+      <label>Available Seats</label>
+      <input type="number" [(ngModel)]="newFlight.availableSeats" name="availableSeats" required />
+    </div>
+
+    <div class="form-group">
+      <label>Price</label>
+      <input type="number" [(ngModel)]="newFlight.price" name="price" step="0.01" required />
+    </div>
+
+    <button type="submit" class="btn">Add Flight</button>
+  </form>
+
+  <hr />
+
+  
+  <h3>Available Flights</h3>
+  <table class="flight-table" *ngIf="flights.length > 0; else noFlights">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Flight Number</th>
+        <th>Origin</th>
+        <th>Destination</th>
+        <th>Travel Date</th>
+        <th>Seats</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let flight of flights">
+        <td>{{ flight.flightID }}</td>
+        <td>{{ flight.flightNumber }}</td>
+        <td>{{ flight.origin }}</td>
+        <td>{{ flight.destination }}</td>
+        <td>{{ flight.travelDate | date: 'shortDate' }}</td>
+        <td>{{ flight.availableSeats }}</td>
+        <td>{{ flight.price | currency }}</td>
+        <td>
+          <button class="btn-delete" (click)="deleteFlight(flight.flightID)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noFlights>
+    <p>No flights available.</p>
+  </ng-template>
+</div>

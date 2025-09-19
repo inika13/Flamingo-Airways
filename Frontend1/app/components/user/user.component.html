@@ -1,0 +1,49 @@
+<div class="user-container">
+  <h2 class="title">👤 Manage Users</h2>
+
+  <div class="form-container">
+    <input [(ngModel)]="newUser.userName" placeholder="User Name" class="form-input">
+    <input [(ngModel)]="newUser.email" placeholder="Email" class="form-input">
+    <input [(ngModel)]="newUser.password" type="password" placeholder="Password" class="form-input">
+
+   
+    <select [(ngModel)]="newUser.role" class="form-input">
+      <option value="" disabled selected>Select Role</option>
+      <option value="Admin">Admin</option>
+      <option value="Customer">Customer</option>
+    </select>
+
+    <button (click)="addUser()" class="btn">Add User</button>
+  </div>
+
+  <h3 class="sub-title">📋 User List</h3>
+
+  <table class="user-table" *ngIf="users.length > 0; else noUsers">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>User Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Role</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.userId }}</td>
+        <td>{{ user.userName }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.password }}</td> 
+        <td>{{ user.role }}</td> 
+        <td>
+          <button (click)="deleteUser(user.userId!)" class="btn-cancel">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noUsers>
+    <p class="empty-text">No users available.</p>
+  </ng-template>
+</div>

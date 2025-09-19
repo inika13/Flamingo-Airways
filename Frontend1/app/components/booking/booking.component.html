@@ -1,0 +1,87 @@
+<div class="booking-container">
+  <h2 class="title">✈️ Manage Bookings</h2>
+
+ 
+  <div class="form-container">
+    <input
+      type="number"
+      [(ngModel)]="newBooking.customerID"
+      placeholder="Customer ID"
+      class="form-input"
+    />
+    <input
+      type="number"
+      [(ngModel)]="newBooking.flightID"
+      placeholder="Flight ID"
+      class="form-input"
+    />
+    <input
+      type="text"
+      [(ngModel)]="newBooking.passengerName"
+      placeholder="Passenger Name"
+      class="form-input"
+    />
+    <input
+      type="number"
+      [(ngModel)]="newBooking.passengerAge"
+      placeholder="Passenger Age"
+      class="form-input"
+    />
+    <input
+      type="text"
+      [(ngModel)]="newBooking.passengerGender"
+      placeholder="Passenger Gender"
+      class="form-input"
+    />
+    <input
+      type="number"
+      [(ngModel)]="newBooking.noOfSeats"
+      placeholder="No. of Seats"
+      class="form-input"
+    />
+
+    <button (click)="addBooking()" class="btn">➕ Add Booking</button>
+  </div>
+
+  
+  <h3 class="sub-title">📋 Current Bookings</h3>
+  <table class="booking-table" *ngIf="bookings.length > 0; else noBookings">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Customer</th>
+        <th>Flight</th>
+        <th>Passenger</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Seats</th>
+        <th>Status</th>
+        <th>Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let b of bookings">
+        <td>{{ b.bookingID }}</td>
+        <td>{{ b.customerID }}</td>
+        <td>{{ b.flightID }}</td>
+        <td>{{ b.passengerName }}</td>
+        <td>{{ b.passengerAge }}</td>
+        <td>{{ b.passengerGender }}</td>
+        <td>{{ b.noOfSeats }}</td>
+        <td>{{ b.status }}</td>
+        <td>{{ b.bookingDate | date: 'short' }}</td>
+        <td>
+          <button (click)="deleteBooking(b.bookingID)" class="btn-cancel">
+            ❌ Cancel
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  
+  <ng-template #noBookings>
+    <p class="empty-text">No bookings available.</p>
+  </ng-template>
+</div>

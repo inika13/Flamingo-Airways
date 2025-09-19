@@ -1,0 +1,131 @@
+
+.user-container {
+  background: url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=1600&q=80')
+    no-repeat center center fixed; 
+  background-size: cover;
+  min-height: 100vh;
+  padding: 40px;
+  color: #fff;
+  font-family: "Segoe UI", sans-serif;
+  position: relative;
+}
+
+
+.user-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 50, 0.55); 
+  z-index: 0;
+}
+
+.user-container > * {
+  position: relative;
+  z-index: 1; 
+}
+
+
+.title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.sub-title {
+  margin-top: 40px;
+  font-size: 1.5rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+  padding-bottom: 5px;
+}
+
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.form-input {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background: rgba(255,255,255,0.9);
+  color: #000;
+}
+
+
+.btn {
+  background: #2196f3;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #1976d2;
+}
+
+.btn-cancel {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-cancel:hover {
+  background: #d32f2f;
+}
+
+
+.user-table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  background: rgba(255,255,255,0.15);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.user-table th,
+.user-table td {
+  padding: 12px 15px;
+  text-align: left;
+  color: #fff;
+}
+
+.user-table th {
+  background: rgba(0,0,0,0.6);
+  font-weight: bold;
+}
+
+.user-table tr:nth-child(even) {
+  background: rgba(255,255,255,0.1);
+}
+
+
+.empty-text {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
